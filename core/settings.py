@@ -20,6 +20,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'shop',
+    'mptt',
+
     
     'django.contrib.admin',
     'django.contrib.auth',
