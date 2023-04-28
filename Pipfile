@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 django = "*"
 django-mptt = "*"
+pillow = "*"
+django-mptt-admin = "*"
 
 [dev-packages]
 

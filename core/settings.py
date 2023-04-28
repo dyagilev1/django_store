@@ -20,7 +20,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'shop',
-    'mptt',
 
     
     'django.contrib.admin',
@@ -29,6 +28,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'mptt',
+    'django_mptt_admin',
+    
 ]
 
 MIDDLEWARE = [
