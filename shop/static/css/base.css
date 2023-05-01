@@ -123,8 +123,8 @@ ul.errorlist {
 }
 
 #subheader {
-    background:#ececec;
-    color:#444;
+    background:#000000;
+    color:#000000;
     padding:15px 100px;
     overflow:auto;
 }
@@ -132,7 +132,7 @@ ul.errorlist {
 #header .logo {
     font-family: 'Ubuntu', sans-serif;
     float:left;
-    color:#333;
+    color:#000000;
     font-size:22px;
     margin-right:10%;
 }
@@ -318,7 +318,7 @@ ul.errorlist {
 /* braintree hosted fields */
 form div.field {
     font-size:13px;
-    color:#666;
+    color:#000000;
     width:300px;
     height:22px;
     margin-bottom:10px;

@@ -11,7 +11,8 @@ class Category(MPTTModel):
     class MPTTMeta:
         ordering = ('name',)
 
-    class Meta:
+    class Meta:        
+        unique_together = [['parent', 'slug']]
         verbose_name = 'category'
         verbose_name_plural = 'categories'
 
