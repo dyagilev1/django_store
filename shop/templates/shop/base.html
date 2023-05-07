@@ -54,10 +54,11 @@
             <div class="header-meta d-flex clearfix justify-content-end">
                 <!-- Search Area -->
                 <div class="search-area">
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Шукати" aria-label="Шукати">
-                        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+
+                    <form class="form-inline my-2 my-lg-0" action="{% url 'shop:search_product'%}" method="GET">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Шукати" aria-label="Шукати" name="q">
                     </form>
+
                 </div>
                 <!-- Favourite Area -->
                 <div class="favourite-area">

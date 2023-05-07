@@ -3,6 +3,8 @@ from .models import Category, Product, Gallery
 from cart.forms import CartAddProductForm
 from django.core.paginator import Paginator , EmptyPage, PageNotAnInteger 
 
+from django.contrib.postgres.search import SearchVector
+
 
 def index(request):
     category = None
@@ -16,6 +18,9 @@ def index(request):
     
 
 def product_list(request, category_slug=None):
+
+
+
     category = None
     categories = Category.objects.all()
     products = Product.objects.filter(available=True)
@@ -56,3 +61,17 @@ def product_detail(request, id, slug):
                                                                 'category': category,
                                                                 'categories': categories,
                                                                 "images": images})
+
+
+def search_product(request):
+    category = None
+    categories = Category.objects.all()
+
+    query = request.GET.get("q")
+
+    products = Product.objects.filter(name__icontains=query)
+    return render(request, 'shop/product/search.html', context={'products': products,
+                                                               'query': query,
+                                                               'category': category,
+                                                                'categories': categories,
+                                                               })
