@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Category, Product
+from .models import Category, Product, Gallery
 from cart.forms import CartAddProductForm
 from django.core.paginator import Paginator , EmptyPage, PageNotAnInteger 
 
@@ -47,8 +47,12 @@ def product_detail(request, id, slug):
                                 id=id,
                                 slug=slug,
                                 available=True)
+    
+    images = Gallery.objects.filter(product=product)
+
     cart_product_form = CartAddProductForm()
     return render(request, 'shop/product/detail.html', context={'product': product,
                                                         'cart_product_form': cart_product_form,
                                                                 'category': category,
-                                                                'categories': categories,})
+                                                                'categories': categories,
+                                                                "images": images})
