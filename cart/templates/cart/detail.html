@@ -1,5 +1,6 @@
 {% extends 'shop/base.html' %}
 {% load static %}
+{% load mptt_tags %}
 
 {% block title %}
 Your shopping cart
@@ -36,6 +37,7 @@ Your shopping cart
                             </form>
                         </td>
                         <td>
+
                             <form action="{% url 'cart:cart_remove' product.id %}" method="post">
                                 <input type="submit" value="Remove">
                                 {% csrf_token %}

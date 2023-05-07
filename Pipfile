@@ -8,6 +8,10 @@ django = "*"
 django-mptt = "*"
 pillow = "*"
 django-mptt-admin = "*"
+django-crispy-forms = "*"
+crispy-bootstrap4 = "*"
+django-import-export = "*"
+django-jazzmin = "*"
 
 [dev-packages]
 
