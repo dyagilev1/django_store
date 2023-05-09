@@ -139,3 +139,5 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR
+
+AUTH_USER_MODEL = 'users.User'

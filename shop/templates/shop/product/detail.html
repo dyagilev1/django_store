@@ -23,6 +23,8 @@
 
 
 
+
+
 <div class="container-product">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner border ">
@@ -45,13 +47,12 @@
         </a>
     </div>
     
-
     
 
-
-
         <div class="col-lg-7 p-5">
-            <h3 class="font-weight-semi-bold">{{ product.name }}</h3>
+            <p><strong>{{product.brand}}</strong><p>
+            <h4 class="font-weight-semi-bold">{{ product.name }}</h4>
+            
             <div class="d-flex mb-3">
                 <div class="text-primary mr-2">
                     <small class="fas fa-star"></small>
@@ -64,33 +65,67 @@
             </div>
             <h3 class="font-weight-semi-bold mb-4">{{ product.price }} грн.</h3>
             <p class="mb-4"></p>
+
+
+
             <div class="d-flex mb-3">
-                <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
-                <form>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="custom-control-input" id="size-1" name="size">
-                        <label class="custom-control-label" for="size-1">36</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="custom-control-input" id="size-2" name="size">
-                        <label class="custom-control-label" for="size-2">37</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="custom-control-input" id="size-3" name="size">
-                        <label class="custom-control-label" for="size-3">38</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="custom-control-input" id="size-4" name="size">
-                        <label class="custom-control-label" for="size-4">39</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="custom-control-input" id="size-5" name="size">
-                        <label class="custom-control-label" for="size-5">40</label>
+                 {% if product.variant == 'Size' %}
+                    <form method="post" action="?q=selectvariant" id="post-color">
+                        {% csrf_token %}
+                        <div id="appendHere">
+                            <input type="hidden" name="size" id="size" value="{{ size_id }}">
+                            <ul class="color-option" >
+                                <p class="text-dark font-weight-medium mb-0 mr-3">Розмір: </p>
+                                {% for rs in sizes %}
+                                    <input type="radio"  {% if variant.id == rs.id %} checked {% endif %} name="variantid" id="variantid" value="{{ rs.id }}" onchange="this.form.submit();">
+                                        {{ rs.size.name }}                               
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </form>
+                {% endif %}
+            </div>
+
+             {% if  product.variant == 'Size'   %}
+                <form action="{% url "cart:cart_add" product.id %}" method="post" id="addchart-form">
+                    {{ cart_product_form }}
+                    {% csrf_token %}
+                    <input type="hidden" name="variantid" id="variantid" value="{{ variant.id }}">
+                    <div id="SelectedProduct">
+                        <p style="color:green;"><strong>{% if product.available > 0  %} Є в наявності {% else %} Нема в наявності {% endif %}</strong> </p>
+                        <p><strong>Вибраний розмір:</strong>  {{ variant.size }}</p>
+                        
+                        <div class="cart-fav-box d-flex align-items-center">
+                    <!-- Cart -->
+                            <button type="submit" name="cart_add" class="btn essence-btn">Додати у кошик</button>
+                    <!-- Favourite -->
+                            <div class="favourite-area">
+                                <a href="#"><img src="{% static 'img/heart.png' %}" alt=""></a>
+                            </div>
+                        </div>   
                     </div>
                 </form>
-            </div>
-        
-            <div class="d-flex align-items-center mb-4 pt-2">
+
+            {% else %}
+                <form action="{% url "cart:cart_add" product.id %}" method="post">
+                    {% csrf_token %}
+                    <div id="SelectedProduct">
+                        <p style="color:red;"><strong>Нема в наявності</strong></p>
+                    </div>
+                </form>
+            {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+            {% comment %} <div class="d-flex align-items-center mb-4 pt-2">
                 <div class="input-group quantity mr-3" style="width: 130px;">
                     <div class="input-group-btn">
                         <button class="btn btn-primary btn-minus" >
@@ -126,7 +161,7 @@
                         <i class="fab fa-pinterest"></i>
                     </a>
                 </div>
-            </div>
+            </div> {% endcomment %}
         </div>
     </div>
     <div class="row px-xl-5">
@@ -237,5 +272,30 @@
         </div>
     </div>
 </div>
+
+
+<div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 {% endblock content %}

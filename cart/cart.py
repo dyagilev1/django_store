@@ -1,10 +1,20 @@
 from decimal import Decimal
 from django.conf import settings
-from shop.models import Product
+from django.db import models
+
+from shop.models import Product, Variants
+from django.forms import ModelForm
+
 
 
 class Cart:
+
     """Shopping cart"""
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    variant = models.ForeignKey(Variants, on_delete=models.SET_NULL,blank=True, null=True) # relation with varinat
+    quantity = models.IntegerField()
+    objects = models.Manager()
+
 
     def __init__(self, request):
         """Init cart"""
@@ -13,6 +23,7 @@ class Cart:
         if not cart:
             cart = self.session[settings.CART_SESSION_ID] = {}
         self.cart = cart
+
 
     def add(self, product, quantity=1, override_quantity=False):
         """Add product to the cart or update its quantity"""
@@ -63,3 +74,7 @@ class Cart:
         """Clear cart from the session"""
         del self.session[settings.CART_SESSION_ID]
         self.save()
+
+class CartForm(ModelForm):
+        model = Cart
+        fields = ['quantity']

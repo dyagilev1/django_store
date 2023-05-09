@@ -12,7 +12,7 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner">
-            <div class="carousel-item active">
+            <div class="carousel-item active data-mdb-interval="10000" ">
             <img class="d-block w-100" src="{% static 'img/bg3.png' %}" alt="First slide">
                 <div class="carousel-caption d-none d-md-block">
                     <h1> New arrival </h1>
@@ -70,25 +70,25 @@
             <div class="row justify-content-center">
                 <!-- Single Catagory -->
                 <div class="col-12 col-sm-6 col-md-4">
-                    <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(shop/static/img/no_image.png);">
+                    <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(static/img/no_image.png);">
                         <div class="catagory-content">
-                            <a href="{% url 'shop:product_list' %}">Women</a>
+                            <a  href="/product_list?gender=2">Women</a>
                         </div>
                     </div>
                 </div>
                 <!-- Single Catagory -->
                 <div class="col-12 col-sm-6 col-md-4">
-                    <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(shop/static/img/no_image.png);">
+                    <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(static/img/no_image.png);">
                         <div class="catagory-content">
-                            <a href="{% url 'shop:product_list' %}">Men</a>
+                            <a  href="/product_list?gender=1">Man</a>
                         </div>
                     </div>
                 </div>
                 <!-- Single Catagory -->
                 <div class="col-12 col-sm-6 col-md-4">
-                    <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(shop/static/img/no_image.png);">
+                    <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(static/img/no_image.png);">
                         <div class="catagory-content">
-                            <a href="{% url 'shop:product_list' %}">Kids</a>
+                           <a  href="/product_list?gender=3">Kids</a>
                         </div>
                     </div>
                 </div>
