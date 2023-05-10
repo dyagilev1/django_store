@@ -1,15 +1,11 @@
 from django.db import models
 
-from django.contrib.auth.models import AbstractUser
-
-
-class User(AbstractUser):
-    email = models.EmailField(unique=True)
+# Create your models here.
+class PreRegistration(models.Model):
     username = models.CharField(max_length=100)
-
-    USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ['username']
-
-    def __str__(self):
-        return self.username
-    
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
+    password1 = models.CharField(max_length=100)
+    password2 = models.CharField(max_length=100)
+    otp = models.CharField(max_length=10)

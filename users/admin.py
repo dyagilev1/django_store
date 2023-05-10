@@ -1,9 +1,7 @@
 from django.contrib import admin
-from .models import User
-
-
-class UserAdmin(admin.ModelAdmin):
-    list_display = ['username', 'email']
-
-
-admin.site.register(User, UserAdmin)
+from django.contrib.admin.decorators import display
+from .models import PreRegistration
+# Register your models here.
+@admin.register(PreRegistration)
+class PreRegistrationAdmin(admin.ModelAdmin):
+    list_display=['first_name','last_name']

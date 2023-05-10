@@ -27,8 +27,7 @@ INSTALLED_APPS = [
     'cart',
     'orders',
     'users',
-
-
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,9 +40,8 @@ INSTALLED_APPS = [
     'crispy_bootstrap4',
     'import_export',
  
-
-
 ]
+
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -137,7 +135,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR
 
-AUTH_USER_MODEL = 'users.User'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+
+# Emailing settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_FROM = 'yaroslav0dyagilev@gmail.com'
+EMAIL_HOST_USER = 'yaroslav0dyagilev@gmail.com'
+EMAIL_HOST_PASSWORD = 'eucpdtcdjpnrmaer'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+PASSWORD_RESET_TIMEOUT = 14400
