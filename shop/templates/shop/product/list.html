@@ -99,7 +99,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer d-flex justify-content-between bg-light border">
-                                    <p class="price">{{ product.price }} грн. skidka</p>
+                                    {% comment %} <p class="price">{{ product.price }} грн. skidka</p> {% endcomment %}
 
                                     {% comment %} <form action="{% url "cart:cart_add" product.id %}" class="btn btn-sm text-dark p-0" method="post">
                                     {{ cart_product_form }}
