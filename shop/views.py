@@ -148,9 +148,23 @@ def search_product(request):
                                                                 'query': query,
                                                                 'category': category,
                                                                 'categories': categories,
-                                                                'brand': brand,
-                                                                'gender': gender,
+                                                                'brand': brand,                                                               'gender': gender,
                                                                 })
 
+def wishlist_view(request):
+    wishlist = wishlist_model.objects.all()
+    context = {
+        "w":wishlist
+    }
+    return render(request, "shop/wishlist.html", context)
 
+
+
+def add_to_wishlist(request):
+    product_id = request.GET['id']
+    product = Product.objects.get(id=product_id)
+    
+    context = {}
+
+    wishlist_count = wishlist_model.objects.filter(product=product, uses=request.user).count()
     

@@ -156,12 +156,12 @@ RATING=(
     
 
 # ############ WISHLIST ############
-# class WishList(models.Model):
-#     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+class WishList(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
 
-#     class Meta:        
-#         verbose_name_plural = 'WishList'
+    class Meta:        
+        verbose_name_plural = 'WishList'
 
-#     def __str__(self):
-#         return self.product.name
+    def __str__(self):
+        return self.product.name
