@@ -9,9 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Sneakers World{% endblock title %}</title>
 
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
 
     <link rel="stylesheet" href="{% static 'css/core-style.css' %}">
-    {% comment %} <link rel="stylesheet" href="{% static 'css/base.css' %}"> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
 
 
@@ -43,7 +44,7 @@
                     <!-- Nav Start -->
                     <div class="classynav">
                         <ul>
-                            <li><a href="{% url 'shop:product_list' %}">Shop</a></li>
+                            <li><a href="{% url 'shop:product_list' %}">Магазин</a></li>
 
                         </ul>
                     </div>
@@ -62,7 +63,7 @@
                 </div>
                 <!-- Favourite Area -->
                 <div class="favourite-area">
-                    <a href="#"><img src="{% static 'img/heart.png' %}" alt=""></a>
+                    <a href="{% url 'shop:wishlist_view' %}"><img src="{% static 'img/heart.png' %}" alt=""></a>
                 </div>
                 <!-- User Login Info -->
                 <div class="user-login-info">
@@ -78,34 +79,118 @@
             </div>
         </div>
     </header>
-    <div class="container-fluid  mb-15">
-        <div class="row d-flex justify-content-center">
-            <div class="col-lg-3 d-none d-lg-block float-none">
+</div>
+<div class="container-fluid  mb-15">
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-3 d-none d-lg-block float-none">
 
-                <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0"> 
-                    <div class="navbar-nav w-100">
-                        {% recursetree categories %}
-                        <div class="nav-item dropdown dropdown ">
-                            <a href="{{node.get_absolute_url}}" {% if not node.is_leaf_node %} class="nav-link dropdown-toggle"  data-toggle="dropdown" {% endif %}>{{node.name}} </a>
-                            <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
-                                {% if not node.is_leaf_node %}
-                                <ul>
-                                    <li><a href="">{{ children }}</a></li>
-                                </ul>
-                                {% endif %}
+            <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0"> 
+                <div class="navbar-nav w-100">
+                    {% recursetree categories %}
+                    <div class="nav-item dropdown dropdown ">
+                        <a href="{{node.get_absolute_url}}" {% if not node.is_leaf_node %} class="nav-link dropdown-toggle"  data-toggle="dropdown" {% endif %}>{{node.name}} </a>
+                        <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
+                            {% if not node.is_leaf_node %}
+                            <ul>
+                                <li><a href="">{{ children }}</a></li>
+                            </ul>
+                            {% endif %}
 
-                            </div>
                         </div>
-                        {% endrecursetree %}
                     </div>
-                </nav>
-            </div>
+                    {% endrecursetree %}
+                </div>
+            </nav>
         </div>
     </div>
-        <div id="content">
-        {% block content %}
-        {% endblock content %}
-    </div>
+</div>
+
+
+
+<div id="content">
+    {% block content %}
+    {% endblock content %}
+</div>
+
+<footer class="footer_area clearfix">
+        <div class="container">
+            <div class="row">
+                <!-- Single Widget Area -->
+                <div class="col-12 col-md-6">
+                    <div class="single_widget_area d-flex mb-30">
+                        <!-- Logo -->
+                        <div class="footer-logo mr-50">
+                            <a class="nav-brand" href="/"> Sneakers World <alt=""></a>
+                        </div>
+                        <!-- Footer Menu -->
+                        <div class="footer_menu">
+                            <ul>
+                                <li><a href="{% url 'shop:product_list' %}">Магазин</a></li>
+                                <li><a href="blog.html">Про нас</a></li>
+                                <li><a href="contact.html">Контакт</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Widget Area -->
+                <div class="col-12 col-md-6">
+                    <div class="single_widget_area mb-30">
+                        <ul class="footer_widget_menu">
+                            <li><a href="#">ДОСТАВКА</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">ОПЛАТА</a></li>
+                            <li><a href="#">ПОЛІТИКА КОНФІДЕНЦІЙНОСТІ</a></li>
+                            <li><a href="#">ПОВЕРНЕННЯ ТОВАРУ</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row align-items-end">
+                <!-- Single Widget Area -->
+                <div class="col-12 col-md-6">
+                    <div class="single_widget_area">
+                        <div class="footer_heading mb-30">
+                            <h6>ЗВОРОТНІЙ ЗВ'ЯЗОК</h6>
+                        </div>
+                        <div class="subscribtion_form">
+                            <form action="#" method="post">
+                                <input type="email" name="mail" class="mail" placeholder="Введіть свою пошту">
+                                <button type="submit" class="submit"></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {% comment %} <!-- Single Widget Area -->
+                <div class="col-12 col-md-6">
+                    <div class="single_widget_area">
+                        <div class="footer_social_area">
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Youtube"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div> {% endcomment %}
+            </div>
+
+<div class="row mt-5">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <a href="http://127.0.0.1:8000/" target="_blank">Sneakers World</a>
+    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+
+
+
      {% comment %} <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
     <!-- Popper js -->
     <script src="{% static 'js/popper.min.js' %}"></script>
@@ -117,7 +202,7 @@
     <script src="{% static 'js/classy-nav.min.js' %}"></script>
     <!-- Active js -->
     <script src="{% static 'js/active.js' %}"></script> {% endcomment %}
-</div>
+
    
 
 

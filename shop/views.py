@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Category, Product, Gallery,  Variants, Brand, Gender
+from .models import Category, Product, Gallery,  Variants, Brand, Gender, WishList
 from cart.forms import CartAddProductForm
 from django.core.paginator import Paginator , EmptyPage, PageNotAnInteger 
 
@@ -151,20 +151,26 @@ def search_product(request):
                                                                 'brand': brand,                                                               'gender': gender,
                                                                 })
 
+
 def wishlist_view(request):
-    wishlist = wishlist_model.objects.all()
-    context = {
-        "w":wishlist
-    }
-    return render(request, "shop/wishlist.html", context)
+    category = None
+    categories = Category.objects.all()
+    return render(request, "shop/product/wishlist.html", context={'category': category,
+                                                                'categories': categories,})
+
+# def WishList_view(request):
+#     wishlist = WishList_model.objects.all()
+#     context = {
+#         "w":wishlist
+#     }
+#     return render(request, "shop/wishlist.html", context)
 
 
 
-def add_to_wishlist(request):
-    product_id = request.GET['id']
-    product = Product.objects.get(id=product_id)
+# def add_to_wishlist(request):
+#     product_id = request.GET['id']
+#     product = Product.objects.get(id=product_id)
     
-    context = {}
+#     context = {}
 
-    wishlist_count = wishlist_model.objects.filter(product=product, uses=request.user).count()
-    
+#     wishlist_count = wishlist_model.objects.filter(product=product, uses=request.user).count()

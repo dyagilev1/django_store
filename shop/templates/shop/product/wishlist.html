@@ -1,0 +1,65 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block content %}
+<section id="cart-view">
+  <div class="container ">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="cart-view-area">
+          <div class="cart-view-table aa-wishlist-table">
+            <form action="#" method="post">
+              <div class="table-responsive ">
+                <table class="table container">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th></th>
+                      <th>Товар</th>
+                      <th>Вартість</th>
+                      <th>Наявність</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><a class="remove" href="/">
+                        <img class="aa-cart-close" src="{% static 'img/close.png' %}" alt="">
+                        </a></td>
+                      <td><a href="http://127.0.0.1:8000/4/zhinochi-krosivki-adidas-superstar-w/"><img class="aa-cart-title" src="{% static 'img/3.jpg' %}"></a></td>
+                      <td><a  href="http://127.0.0.1:8000/4/zhinochi-krosivki-adidas-superstar-w/">Жіночі кросівки Adidas SUPERSTAR W</a></td>
+                      <td>2590.00 грн.</td>
+                      <td>Є в наявності</td>
+                      <td><a href="{% url 'cart:cart_detail' %}" class="aa-add-to-cart-btn">Додати у кошик</a></td>
+                    </tr>
+                    <tr>
+                      <td><a class="remove" href="/">
+                        <img class="aa-cart-close" src="{% static 'img/close.png' %}" alt="">
+                        </a></td>
+                      <td><a href="http://127.0.0.1:8000/22/kedi-puma-caven-dime/"><img class="aa-cart-title" src="{% static 'img/1.jpeg' %}"></a></td>
+                      <td><a class="aa-cart-title" href="http://127.0.0.1:8000/22/kedi-puma-caven-dime/">Кеди Puma Caven Dime</a></td>
+                      <td>3190.00 грн.</td>
+                      <td>Є в наявності</td>
+                      <td><a href="{% url 'cart:cart_detail' %}" class="aa-add-to-cart-btn">Додати у кошик</a></td>
+                    </tr>
+                    <tr>
+                      <td><a class="remove" href="/">
+                        <img class="aa-cart-close" src="{% static 'img/close.png' %}" alt="">
+                        </a></td>
+                      <td><a href="http://127.0.0.1:8000/31/cholovichi-chereviki-native-fitzsimmons-citylite-bloom-2022/"><img class="aa-cart-title" src="{% static 'img/2.jpg' %}"></a></td>
+                      <td><a  href="http://127.0.0.1:8000/31/cholovichi-chereviki-native-fitzsimmons-citylite-bloom-2022/">Чоловічі черевики Native Fitzsimmons Citylite Bloom 2022</a></td>
+                      <td>3960.00 грн.</td>
+                      <td>Є в наявності</td>
+                      <td><a href="{% url 'cart:cart_detail' %}" class="aa-add-to-cart-btn">Додати у кошик</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
