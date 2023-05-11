@@ -1,6 +1,30 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
 
+
+
+
+.hero__container{
+    background-image: url(../img/sneakers_back.png);
+    background-position: center;
+    height: 100vh;
+    background-size: 70%;
+}
+
+
+
+
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 100%;
+    left: 0;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
 .text-carousel{
     color:white;
 }

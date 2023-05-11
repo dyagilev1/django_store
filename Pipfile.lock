@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "c1da09147df61525ac2c0694009dc77d4c1a09c0fba02936058e0c988a1ce3da"
+            "sha256": "26d27d3ef86e011180d3ba2523e7c681e1bc9938aa130e821e43364de303c370"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -63,6 +63,21 @@
             ],
             "index": "pypi",
             "version": "==2.0"
+        },
+        "django-fontawesome": {
+            "hashes": [
+                "sha256:595dccc2836a23a54247025c305bf7c0aa080331a6a3b0f0cdf14ae66d0a14df"
+            ],
+            "index": "pypi",
+            "version": "==1.0"
+        },
+        "django-fontawesome-5": {
+            "hashes": [
+                "sha256:1be340e795a6a68ebd9ba5d75e26bd72a839515c351786ff45e16b90bf50c3a0",
+                "sha256:4fc4a7f5d0fe6e10d542ac9f1c143ad5e92aa61c6f310ea297c3c26bfc6001dd"
+            ],
+            "index": "pypi",
+            "version": "==1.0.18"
         },
         "django-import-export": {
             "hashes": [
@@ -248,6 +263,7 @@
                 "sha256:e61ceaab6f49fb8bdfaa0f92c4b57bcfbea54c09277b1b4f7ac376bfb7a7c174",
                 "sha256:f84fbc98b019fef2ee9a1cb3ce93e3187a6df0b2538a651bfb890254ba9f90b5"
             ],
+            "markers": "python_version >= '3.6'",
             "version": "==6.0"
         },
         "six": {

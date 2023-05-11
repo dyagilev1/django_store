@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Category, Product, Gallery,  Variants, Brand, Gender, WishList
+from .models import Category, Product, Gallery,  Variants, Brand, Gender, ProductReview
 from cart.forms import CartAddProductForm
 from django.core.paginator import Paginator , EmptyPage, PageNotAnInteger 
-
+from .forms import ProductReviewForm
+from django.http import JsonResponse
 
 
 
@@ -92,6 +93,18 @@ def product_detail(request, id, slug):
                                 slug=slug,
                                 available=True)
     
+    reviews = ProductReview.objects.filter(product=product)
+
+    review_form = ProductReviewForm()
+
+    make_review = True
+
+    if request.user.is_authenticated:
+        user_review_count = ProductReview.objects.filter(user=request.user, product=product).count()
+
+        if user_review_count > 0:
+            make_review = False
+
     images = Gallery.objects.filter(product=product)
 
     cart_product_form = CartAddProductForm()
@@ -99,7 +112,11 @@ def product_detail(request, id, slug):
                 'cart_product_form': cart_product_form,
                 'category': category,
                 'categories': categories,
-                'images': images, }
+                'images': images, 
+                'reviews': reviews, 
+                'review_form': review_form, 
+                'make_review': make_review, 
+                }
 
     if product.variant != "None":
         if request.method == 'POST':
@@ -148,29 +165,83 @@ def search_product(request):
                                                                 'query': query,
                                                                 'category': category,
                                                                 'categories': categories,
-                                                                'brand': brand,                                                               'gender': gender,
+                                                                'brand': brand,                                                            
+                                                                'gender': gender,
                                                                 })
 
 
-def wishlist_view(request):
+
+def ajax_add_review(request, id):
+    product = Product.objects.get(pk=id)
+    user = request.user
+
+    review = ProductReview.objects.create(
+        user = user,
+        product = product,
+        review = request.POST['review'],
+        rating = request.POST['rating'],
+    )
+
+    context = {
+        'user': user.username,
+        'review': request.POST['review'],
+        'rating': request.POST['rating'],
+    }
+
+    return JsonResponse({
+        'bool': True,
+        'context': context,
+        })
+
+
+
+
+
+
+
+
+############ DOWN ##############
+def about_us(request):
     category = None
     categories = Category.objects.all()
-    return render(request, "shop/product/wishlist.html", context={'category': category,
+    return render(request, "shop/info/about_us.html", context={'category': category,
                                                                 'categories': categories,})
 
-# def WishList_view(request):
-#     wishlist = WishList_model.objects.all()
-#     context = {
-#         "w":wishlist
-#     }
-#     return render(request, "shop/wishlist.html", context)
+def contact(request):
+    category = None
+    categories = Category.objects.all()
+    return render(request, "shop/info/contacts.html", context={'category': category,
+                                                                'categories': categories,})
+
+def delivery(request):
+    category = None
+    categories = Category.objects.all()
+    return render(request, "shop/info/delivery.html", context={'category': category,
+                                                                'categories': categories,})
+
+def faq(request):
+    category = None
+    categories = Category.objects.all()
+    return render(request, "shop/info/faq.html", context={'category': category,
+                                                                'categories': categories,})
+
+def payment(request):
+    category = None
+    categories = Category.objects.all()
+    return render(request, "shop/info/payment.html", context={'category': category,
+                                                                'categories': categories,})
+
+def privacy_policy(request):
+    category = None
+    categories = Category.objects.all()
+    return render(request, "shop/info/privacy_policy.html", context={'category': category,
+                                                                'categories': categories,})
+
+def return_product(request):
+    category = None
+    categories = Category.objects.all()
+    return render(request, "shop/info/return_product.html", context={'category': category,
+                                                                'categories': categories,})
 
 
 
-# def add_to_wishlist(request):
-#     product_id = request.GET['id']
-#     product = Product.objects.get(id=product_id)
-    
-#     context = {}
-
-#     wishlist_count = wishlist_model.objects.filter(product=product, uses=request.user).count()

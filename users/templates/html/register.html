@@ -1,18 +1,18 @@
 {% extends 'shop/base.html' %}
 
 {% block content %}
- <div class="container">
+<div class="container">
     <div class="row">
-    <div class="col-md-6 offset-md-3 mt-5">
-    <h3>Реєстрація</h3>
-    <form action="" method="post" novalidate>
-    {% csrf_token %}
-    {{form}}
-    <br>
-    <input type="submit" value="Зареєструватися" class="btn btn-outline-dark">
-    </form>
-    <p class="mt-2"><a href="{% url 'users:login' %}">Увійти в систему</a></p>
+        <div class="col-md-6 offset-md-3 mt-5">
+            <h3>Реєстрація</h3>
+                <form action="" method="post" novalidate>
+                    {% csrf_token %}
+                    {{form}}
+                    <br>
+                    <input type="submit" value="Зареєструватися" class="btn btn-outline-dark">
+                </form>
+            <p class="mt-2"><a href="{% url 'users:login' %}">Увійти в систему</a></p>
+        </div>
     </div>
-    </div>
-    </div>
+</div>
 {% endblock content %}

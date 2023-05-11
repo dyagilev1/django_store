@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 
-from .models import Category, Product, Brand, Gallery, Size, Variants, Gender
+from .models import Category, Product, Brand, Gallery, Size, Variants, Gender, ProductReview
 from django_mptt_admin.admin import DjangoMpttAdmin
 
 from import_export.admin import ImportExportActionModelAdmin
@@ -64,7 +64,8 @@ class SizeAdmin(admin.ModelAdmin):
 class VariantsAdmin(admin.ModelAdmin):
     list_display = ('title', 'product', 'size',)
 
-
+class ProductReviewAdmin(admin.ModelAdmin):
+    list_display = ('user', 'product', 'review', 'rating')
 
 
 admin.site.register(Category, CategoryMPTTModelAdmin)
@@ -72,6 +73,7 @@ admin.site.register(Brand, BrandAdmin)
 admin.site.register(Gender, GenderAdmin)
 admin.site.register(Size, SizeAdmin)
 admin.site.register(Variants, VariantsAdmin)
+admin.site.register(ProductReview, ProductReviewAdmin)
 
 
 

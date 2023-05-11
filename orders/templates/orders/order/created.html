@@ -3,7 +3,23 @@
 {% block title %}Thank you{% endblock %}
 
 {% block content %}
-    <h1>Thank you</h1>
-    <p>Your order has been successfully completed. Your order number is
-        <strong>{{ order.id }}</strong>.</p>
+
+
+    <div class="container-fluid p-5">
+        <div class="d-flex justify-content-center pb-2">
+            <h5>Дякуємо за замовлення! </h5>
+        </div>
+        <div class="d-flex justify-content-center ">
+            <p><strong>Ваше замовлення перебуває в обробці.</strong></p>
+        </div>
+        <div class="d-flex justify-content-center">
+            <p><strong>Очікуйте статус замовлення на пошту {{order.email}} </strong></p>
+        </div>
+        <div class="d-flex justify-content-center pb-3">
+            <p><strong>Номер замовлення - </strong> <h5> {{order.id}}</h5></p>
+        </div>
+        <div class="d-flex justify-content-center">
+            <a href="{% url 'shop:index' %}" class="btn essence-btn">Головна</a>
+        </div>
+    </div>
 {% endblock %}

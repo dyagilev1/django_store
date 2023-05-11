@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'cart',
     'orders',
     'users',
+    'wishlist',
     
     'django.contrib.admin',
     'django.contrib.auth',
@@ -115,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Europe/Kyiv'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 

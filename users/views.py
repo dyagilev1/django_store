@@ -15,7 +15,7 @@ from shop.models import Category
 
 def creatingOTP():
     otp = ""
-    for i in range(11):
+    for i in range(6):
         otp+= f'{random.randint(0,9)}'
     return otp
 
@@ -23,7 +23,7 @@ def sendEmail(email):
     otp = creatingOTP()
     send_mail(
     'One Time Password',
-    f'Your OTP pin is {otp}',
+    f'Дякуємо за реєстрацію. Ваш код для підтвердження облікового запису - {otp}',
     settings.EMAIL_HOST_USER,
     [email],
     fail_silently=False,
@@ -100,10 +100,10 @@ def verifyUser(request):
                     user.last_name = last_name
                     user.save()
                     data.delete()
-                    messages.success(request,'Account is created successfully!')
+                    messages.success(request,'Обліковий запис успішно створено!')
                     return HttpResponseRedirect('/users/verify/')   
                 else:
-                    messages.success(request,'Entered OTO is wrong')
+                    messages.success(request,'Неправильно введено код')
                     return HttpResponseRedirect('/users/verify/')
         else:            
             form = VerifyForm()

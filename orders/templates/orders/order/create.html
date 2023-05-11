@@ -1,10 +1,7 @@
 {% extends "shop/base.html" %}
 
-{% block title %}Checkout{% endblock %}
-
 {% block content %}
-    <h1>Checkout</h1>
-    <div class="order-info">
+    {% comment %} <div class="order-info">
         <h3>Your order</h3>
         <ul>
             {% for item in cart %}
@@ -20,5 +17,127 @@
         {{ form.as_p }}
         <p><input type="submit" value="Place order"></p>
         {% csrf_token %}
-    </form>
-{% endblock %}
+    </form> {% endcomment %}
+
+
+<!-- ##### Checkout Area Start ##### -->
+    <div class="checkout_area section-padding-80">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-12 col-md-6">
+                    <div class="checkout_details_area mt-50 clearfix">
+
+                        <div class="cart-page-heading mb-30">
+                            <h5>ВАШІ ДАНІ</h5>
+                        </div>
+
+                        <form action="." method="post" class="order-form">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="first_name">Ім'я<span>*</span></label>
+                                    {{form.first_name}}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="last_name">Прізвище<span>*</span></label>
+                                    {{form.last_name}}
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="email">Email</label>
+                                    {{form.email}}
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="city">Місто <span>*</span></label>
+                                    {{form.city}}
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="address">Адреса <span>*</span></label>
+                                    {{form.address}}
+                                </div>
+                                <div class="col-12">
+                                    <div class="custom-control custom-checkbox d-block mb-2">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                        <label class="custom-control-label" for="customCheck1">* Я погоджуюсь з умовами</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox d-block mb-2">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                        <label class="custom-control-label" for="customCheck2">Створити акаунт</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox d-block">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                        <label class="custom-control-label" for="customCheck3">Хочу підписатися на E-mail розсилку</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-5 ml-lg-auto">
+                        <div class="order-details-confirmation">
+
+                            <div class="cart-page-heading">
+                                <h5>Ваше замовлення</h5>
+                                <p>Деталі</p>
+                            </div>
+
+                            <ul class="order-details-form mb-4">
+
+                                    <li><span>Товар</span> <span>Вартість</span></li>
+                                    {% for item in cart %}
+                                        <li><span>{{ item.product.name }} x {{ item.quantity }}</span> <span>{{ item.total_price }} грн.</span></li>
+                                    {% endfor %}
+                                    <li><span>Підсумок</span> <span>{{ cart.get_total_price }} грн.</span></li>
+                                    <li><span>Доставка</span> <span>Безкоштовна</span></li>
+                                    <li><span>До сплати</span> <span>{{ cart.get_total_price }} грн.</span></li>
+                            </ul>
+
+
+                            <div id="accordion" role="tablist" class="mb-4">
+                                <div class="card">
+                                    <div class="card-header" role="tab" id="headingOne">
+                                        <h6 class="mb-0">
+                                            <a data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne"><i class="fa fa-circle-o mr-3"></i>Накладений платіж</a>
+                                        </h6>
+                                    </div>
+
+                                    <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                                        <div class="card-body">
+                                            <p>Комісія 20грн. + 2% від суми замовлення</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" role="tab" id="headingTwo">
+                                        <h6 class="mb-0">
+                                            <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><i class="fa fa-circle-o mr-3"></i>На карту Монобанка</a>
+                                        </h6>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <div class="card-body">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo quis in veritatis officia inventore, tempore provident dignissimos.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" role="tab" id="headingThree">
+                                        <h6 class="mb-0">
+                                            <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><i class="fa fa-circle-o mr-3"></i>На карту Приватбанк</a>
+                                        </h6>
+                                    </div>
+                                    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+                                        <div class="card-body">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse quo sint repudiandae suscipit ab soluta delectus voluptate, vero vitae</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                          <p><input class="btn essence-btn" type="submit" value="Зробити замовлення"></p>
+                                {% csrf_token %}
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content%}
