@@ -33,7 +33,6 @@ def index(request):
 
 
 
-
 #Вывод товаров ||| фильтр по полу, бренду ||| пагинация
 def product_list(request, category_slug=None):
 
@@ -81,7 +80,6 @@ def product_list(request, category_slug=None):
         'brand': brand,
         'gender': gender,
     })
-
 
 
 
@@ -140,7 +138,6 @@ def product_detail(request, id, slug):
                                                                
 
 
-
 #Поисковая система по сайту
 def search_product(request):
     gender = Gender.objects.all()
@@ -173,6 +170,7 @@ def search_product(request):
 
 
 
+
 def ajax_add_review(request, id):
     product = Product.objects.get(pk=id)
     user = request.user
@@ -194,10 +192,6 @@ def ajax_add_review(request, id):
         'bool': True,
         'context': context,
         })
-
-
-
-
 
 
 

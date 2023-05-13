@@ -66,7 +66,10 @@ $("#commentForm").submit(function(e){
             if (response.bool === true){
                 console.log("Added to wishlist");
             }
-           
+        },
+        error: function(){
+            $("#error-wish").html("Щоб додати товар у вибране, потрібно авторизуватися!")
+            $(".add-to-wishlist").hide()
         }
     })
  })

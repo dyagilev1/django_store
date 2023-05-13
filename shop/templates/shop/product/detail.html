@@ -108,7 +108,11 @@
                         </div>
                     </div>
                 </form>
-                <button class="add-to-wishlist" data-product-item="{{product.id}}">Додати у favorite</button>
+                {% comment %} {% if request.user.is_authenticated %} {% endcomment %}
+                    <button class="add-to-wishlist" data-product-item="{{product.id}}" >Додати у favorite</button>
+                {% comment %} {% else %} {% endcomment %}
+                    <strong class="text-danger" id="error-wish"></strong>
+                {% comment %} {% endif %} {% endcomment %}
 
             {% else %}
                 <form action="{% url "cart:cart_add" product.id %}" method="post">
@@ -238,6 +242,10 @@
 
                 </div>
                 <div class="tab-pane fade" id="tab-pane-4">
+                {% if reviews.count > 0 %}
+                {% else %}
+                <h6>Ще немає відгуків</h6>
+                {% endif %}
                     <div class="row">
                         <div class="col-md-6">
                             <div class="media mb-4">
@@ -275,6 +283,7 @@
                                         <label for="name">Обрати рейтинг *</label>
                                             <div>{{review_form.rating}}</div>
                                     </div>
+                                    <input type="submit" class="btn essence-btn" value="Залишити відгук">
                                 </form>
                             </div>
                             {% endif %}

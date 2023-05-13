@@ -5,16 +5,19 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.core import serializers
+from django.contrib import messages
 
-@login_required
+
 def wishlist_view(request):
 
     category = None
     categories = Category.objects.all()
 
-    
+    if  request.user.is_authenticated:
+        wishlist = WishList.objects.filter(user=request.user)
+    else:
+        wishlist = WishList.objects.filter()
 
-    wishlist = WishList.objects.filter(user=request.user)
     context = {
         "w":wishlist,
         'category': category,
