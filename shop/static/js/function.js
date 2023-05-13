@@ -1,3 +1,4 @@
+
 const monthNames = ["Jan", "Feb", "Mar", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
 
 
@@ -20,7 +21,7 @@ $("#commentForm").submit(function(e){
             console.log("Comment saved to DB");
 
             if(res.bool == true){
-                $("#review-res").html("Review addes successfully!")
+                $("#review-res").html("Відгук додано успішно!")
                 $(".hide-comment-form").hide()
                 $(".add-review").hide()
 
@@ -43,3 +44,52 @@ $("#commentForm").submit(function(e){
     })
 
 })
+
+ $(document).on("click", ".add-to-wishlist", function(){
+    let product_id = $(this).attr("data-product-item")
+    let this_val = $(this)
+
+    console.log("Product ID IS", product_id);
+
+    $.ajax({
+        url: "/wishlist/add-to-wishlist",
+        data: {
+            "id": product_id
+        },
+        dataType: "json",
+        beforeSend: function(){
+            console.log("Adding to wishlist....")
+            
+        }, 
+        success: function(response){
+            this_val.html("YES")
+            if (response.bool === true){
+                console.log("Added to wishlist");
+            }
+           
+        }
+    })
+ })
+
+ $(document).on("click", ".delete-wishlist-product", function(){
+    let wishlist_id = $(this).attr("data-wishlist-product")
+    let this_val = $(this)
+
+    console.log("wishlist id", wishlist_id)
+
+    $.ajax({
+        url: "/wishlist/remove-from-wishlist",
+        data: {
+            "id": wishlist_id
+        },
+        dataType: "json",
+        beforeSend: function(){
+            console.log("Deleting product from wishlist...");
+        },
+        success: function(response){
+            $("#wishlist-list").html(response.data)
+            console.log("Delete product from wishlist!");
+
+        }
+    })
+ })

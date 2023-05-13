@@ -11,7 +11,7 @@ class Cart:
 
     """Shopping cart"""
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
-    variant = models.ForeignKey(Variants, on_delete=models.SET_NULL,blank=True, null=True) # relation with varinat
+    variant = models.ForeignKey(Variants, on_delete=models.SET_NULL,blank=True, null=True) 
     quantity = models.IntegerField()
     objects = models.Manager()
 

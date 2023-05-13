@@ -98,15 +98,17 @@
                         
                         <div class="cart-fav-box d-flex align-items-center pb-2">
                     <!-- Cart -->
-                            {% comment %} <button type="submit" name="cart_add" class="btn essence-btn">Додати у кошик</button> {% endcomment %}
+                             <button type="submit" name="cart_add" class="btn essence-btn">Додати у кошик</button>
+                             
                     <!-- Favourite -->
-                            <div class="favourite-area">
-                                {% comment %} <a href="#"><img src="{% static 'img/heart.png' %}" alt=""></a> {% endcomment %}
+                            {% comment %} <div class="favourite-area">
+                                 <a href="#"><img src="{% static 'img/heart.png' %}" alt=""></a>
                             <button style="border: none, background: none;" class="add-to-wishlist" data-product-item="{{p.id}}">Добавить в избранное</button>
-                            </div>
+                            </div> {% endcomment %}
                         </div>
                     </div>
                 </form>
+                <button class="add-to-wishlist" data-product-item="{{product.id}}">Додати у favorite</button>
 
             {% else %}
                 <form action="{% url "cart:cart_add" product.id %}" method="post">
@@ -177,7 +179,7 @@
                 <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-3">Оплата</a>
                 <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-4">Відгуки ({{reviews.count}})</a>
             </div>
-            <div class="tab-content pb-5">
+            <div class="tab-content pb-5 ">
                 <div class="tab-pane fade show active " id="tab-pane-1">
                     <h5>Опис товару</h5>
                         <div class="">
@@ -238,7 +240,6 @@
                 <div class="tab-pane fade" id="tab-pane-4">
                     <div class="row">
                         <div class="col-md-6">
-                            <h4 class="mb-4">1 відгук </h4>
                             <div class="media mb-4">
                                 <div class="comment-list">
                                 {% for r in reviews %}
@@ -256,36 +257,34 @@
                             </div>
                         </div>
                         {% if request.user.is_authenticated %}
-                        {% if make_review %}
-                        <div class="col-md-6">
-                            <h4 class="mb-4 add-review">Залишити відгук</h4>
-                            
-                            <strong class="text-success" id="review-res"></strong>
-                            <div class="d-flex my-3">
+                            {% if make_review %}
+                            <div class="col-md-6">
+                                <h4 class="mb-4 add-review">Залишити відгук</h4>
+                                
+                                <strong class="text-success" id="review-res"></strong>
+                                <div class="d-flex my-3">
 
+                                </div>
+                                <form class="form-contact comment_form hide-comment-form" action="{% url 'shop:ajax-add-review' product.id %}" method="POST" id="commentForm">
+                                {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="message">Ваш відгук * </label>
+                                            <div>{{review_form.review}}</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Обрати рейтинг *</label>
+                                            <div>{{review_form.rating}}</div>
+                                    </div>
+                                </form>
                             </div>
-                            <form class="form-contact comment_form hide-comment-form" action="{% url 'shop:ajax-add-review' product.id %}" method="POST" id="commentForm">
-                            {% csrf_token %}
-                                {{review_form}}
-                                {% comment %} <div class="form-group">
-                                    <label for="message">Ваш відгук* </label>
-                                    <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
+                            {% endif %}
+                        {% else %}
+                            <div>
+                                <h5>Щоб залишити відгук, необхідно авторизуватися на сайті.</h5>
+                                <div>
+                                    <p class=" btn btn-outline-dark mt-2"><a href="{% url 'users:login' %}">Авторизуватися</a></p>
                                 </div>
-                                <div class="form-group">
-                                    <label for="name">Ваше ім'я *</label>
-                                    <input type="text" class="form-control" id="name">
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Ваша пошта *</label>
-                                    <input type="email" class="form-control" id="email">
-                                </div>
-                                {% endcomment %} 
-                                <div class="form-group mb-0">
-                                    <input type="submit" value="Залишити відгук" class="btn btn-primary px-3">
-                                </div> 
-                            </form>
-                        </div>
-                        {% endif %}
+                            </div>
                         {% endif %}
                     </div>
                 </div>

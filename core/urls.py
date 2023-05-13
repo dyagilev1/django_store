@@ -7,10 +7,10 @@ from shop import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('wishlist/', include('wishlist.urls', namespace='wishlist')),
     path('cart/', include('cart.urls', namespace='cart')),
     path('orders/', include('orders.urls', namespace='orders')),
     path('users/', include('users.urls', namespace='users')),
-    path('wishlist/', include('wishlist.urls', namespace='wishlist')),
     path('', include('shop.urls', namespace='index')),
 
 

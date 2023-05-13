@@ -7,6 +7,8 @@ app_name = 'wishlist'
 urlpatterns = [
     path('wishlist/', views.wishlist_view, name='wishlist_view'),
 
-    path('add_to_wishlist/', views.add_to_wishlist, name='add_to_wishlist'),
+    path('add-to-wishlist/', views.add_to_wishlist, name='add-to-wishlist'),
+
+    path('remove-from-wishlist/', views.remove_wishlist, name='remove-from-wishlist'),
 
 ]

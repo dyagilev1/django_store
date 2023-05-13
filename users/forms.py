@@ -25,5 +25,5 @@ class VerifyForm(forms.Form):
 
 
 class LoginForm(AuthenticationForm):
-    username = UsernameField(label="Ім'я користувача",widget=forms.TextInput(attrs={"placeholder":"Ім'я користувача","class":"form-control"}))
-    password = forms.CharField(label="Пароль",widget=forms.PasswordInput(attrs={"placeholder":"Пароль",'autocomplete':'current-password',"class":"form-control"}))  
+    username = UsernameField(label="Ім'я користувача",widget=forms.TextInput(attrs={"placeholder":"Ім'я користувача","class":"form-control"}),error_messages={"required":"Будь ласка, введіть правильне ім'я користувача та пароль. Зверніть увагу, що обидва поля можуть бути чутливими до регістру."})
+    password = forms.CharField(label="Пароль",widget=forms.PasswordInput(attrs={"placeholder":"Пароль",'autocomplete':'current-password',"class":"form-control"}),error_messages={"required":"Будь ласка, введіть правильне ім'я користувача та пароль. Зверніть увагу, що обидва поля можуть бути чутливими до регістру."})  

@@ -1,5 +1,3 @@
-{% extends 'shop/base.html' %}
-{% block content %}
 
 <section id="wishlist-list">
   <div class="container ">
@@ -22,13 +20,11 @@
                   </thead>
                   <tbody>
                   
-
-                  {% for w in w %}
-                  {% csrf_token %}
+                  
                     <tr>
                       <td>
                       <button style="border: none; background: none;" data-wishlist-product="{{ w.id }}" class="delete-wishlist-product">Delete</button>
-                        {% comment %} <img class="aa-cart-close" src="{% static 'img/close.png' %}" alt=""> {% endcomment %}
+                        <img class="aa-cart-close" src="{% static 'img/close.png' %}" alt="">
                       </td>
                       <td><a href="{{w.product.get_absolute_url}}"><img class="aa-cart-title" src="{{w.product.image.url}}"></a></td>
                       <td><a href="{{w.product.get_absolute_url}}">{{ w.product.name }}</a></td>
@@ -36,7 +32,6 @@
                       <td>Є в наявності</td>
                       <td><a href="{% url 'cart:cart_detail' %}" class="aa-add-to-cart-btn">Додати у кошик</a></td>
                     </tr>
-                    {% empty %}
                     <tr>
                       <td>
                         <p>
@@ -44,7 +39,7 @@
                         </p>
                       </td>
                     </tr>
-                  {% endfor %}
+                
                   </tbody>
                 </table>
               </div>
@@ -55,5 +50,3 @@
     </div>
   </div>
 </section>
-
-{% endblock %}
