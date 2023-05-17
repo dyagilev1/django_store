@@ -6,10 +6,8 @@
 
 {% block content %}
 
-<!-- Shop Start -->
 <div class="container-fluid pt-5">
     <div class="row px-xl-5">
-        <!-- Shop Sidebar Start -->
         <div class="col-lg-3 col-md-12">
 
             <div class="border-bottom mb-4 pb-4">
@@ -30,19 +28,10 @@
                 </form>
             </div>
             
-            {% comment %} <div class="border-bottom mb-4 pb-4">
-                <h5 class="font-weight-semi-bold mb-4">Filter by price</h5>
-                <form>
-                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <input type="checkbox" class="custom-control-input" checked id="color-all">
-                        <label class="custom-control-label" for="price-all">All price</label>
-                        <span class="badge border font-weight-normal">1000</span>
-                    </div>
-                </form>
-            </div> {% endcomment %}
 
             <div class="mb-5">
                 <h5 class="font-weight-semi-bold mb-4">Виробник</h5>
+                
                 <form>
                     <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                         <input type="checkbox" class="custom-control-input" checked id="size-all"> 
@@ -59,13 +48,11 @@
                 </form>
             </div>
         </div>
-        <!-- Shop Sidebar End -->
         
 
-        <!-- Shop Product Start -->
         <div class="col-lg-9 col-md-12">
             <div class="row pb-3">
-                <div class="col-12 pb-1">
+                {% comment %} <div class="col-12 pb-1">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <div class="dropdown ml-4">
                             <button class="btn border dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
@@ -79,15 +66,15 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> {% endcomment %}
                 {% for product in products %}
 
                     <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
-                        <div class="card product-item border-0 mb-4">
+                        <div class="card product-item border mb-4">
                             <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
                             </div>
                             <div class="item">
-                                <div class="">
+                                <div>
                                     <a href="{{ product.get_absolute_url }}">
                                         <img src="{% if product.image %}
                                             {{ product.image.url }}
@@ -108,7 +95,7 @@
                                     <input type="submit" value="Add to cart">
                                     </form> {% endcomment %}
 
-                                    <p class="price">{{ product.price }} грн.</p>
+                                    <p class="price ">{{ product.price }} грн.</p>
                                 </div>
                             </div>
                         </div>

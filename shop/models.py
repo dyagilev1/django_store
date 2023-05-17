@@ -103,6 +103,9 @@ class Product(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     season = models.CharField(max_length=20, choices=SEASONS, default='None')
+    new_arrival = models.BooleanField(default=False)
+    top_seller = models.BooleanField(default=False)
+
 
  
  

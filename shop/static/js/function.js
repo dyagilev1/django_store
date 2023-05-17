@@ -62,7 +62,7 @@ $("#commentForm").submit(function(e){
             
         }, 
         success: function(response){
-            this_val.html("YES")
+            this_val.html("✓")
             if (response.bool === true){
                 console.log("Added to wishlist");
             }
@@ -96,3 +96,5 @@ $("#commentForm").submit(function(e){
         }
     })
  })
+
+

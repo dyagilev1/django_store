@@ -99,20 +99,11 @@
                         <div class="cart-fav-box d-flex align-items-center pb-2">
                     <!-- Cart -->
                              <button type="submit" name="cart_add" class="btn essence-btn">Додати у кошик</button>
-                             
-                    <!-- Favourite -->
-                            {% comment %} <div class="favourite-area">
-                                 <a href="#"><img src="{% static 'img/heart.png' %}" alt=""></a>
-                            <button style="border: none, background: none;" class="add-to-wishlist" data-product-item="{{p.id}}">Добавить в избранное</button>
-                            </div> {% endcomment %}
                         </div>
                     </div>
                 </form>
-                {% comment %} {% if request.user.is_authenticated %} {% endcomment %}
-                    <button class="add-to-wishlist" data-product-item="{{product.id}}" >Додати у favorite</button>
-                {% comment %} {% else %} {% endcomment %}
+                    <button class="add-to-wishlist btn essence-btn" data-product-item="{{product.id}}">Like</button>
                     <strong class="text-danger" id="error-wish"></strong>
-                {% comment %} {% endif %} {% endcomment %}
 
             {% else %}
                 <form action="{% url "cart:cart_add" product.id %}" method="post">

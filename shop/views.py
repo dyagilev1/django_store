@@ -18,6 +18,9 @@ def index(request):
 
     products = Product.objects.filter(available=True)
 
+    new_arrival = Product.objects.filter(new_arrival=1)
+    top_seller = Product.objects.filter(top_seller=1)
+
     if genderID:
         products = Product.objects.filter(gender = genderID)
     else:
@@ -27,7 +30,10 @@ def index(request):
         'category': category,
         'categories': categories,
         'products': products,
-        'gender': gender
+        'gender': gender,
+        'new_arrival': new_arrival,
+        'top_seller': top_seller,
+
     })
     
 
