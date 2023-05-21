@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'orders',
     'users',
     'wishlist',
-    
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap4',
     'import_export',
+    'fontawesomefree',
+    
+    
  
 ]
 

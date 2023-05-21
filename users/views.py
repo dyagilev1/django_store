@@ -11,7 +11,6 @@ from .forms import VerifyForm,LoginForm
 from django.contrib.auth import login,logout,authenticate
 from shop.models import Category
 
-# Create your views here.
 
 def creatingOTP():
     otp = ""
@@ -40,7 +39,11 @@ def createUser(request):
             if form.is_valid():
                 email = form.cleaned_data['email']
                 otp = sendEmail(email)
-                dt = PreRegistration(first_name=form.cleaned_data['first_name'],last_name=form.cleaned_data['last_name'],username= form.cleaned_data['username'],email=email,otp=otp,password1 = form.cleaned_data['password1'],password2 = form.cleaned_data['password2'])
+                dt = PreRegistration(first_name=form.cleaned_data['first_name'],
+                                     last_name=form.cleaned_data['last_name'],
+                                     username= form.cleaned_data['username'],
+                                     email=email,otp=otp,password1 = form.cleaned_data['password1'],
+                                     password2 = form.cleaned_data['password2'])
                 dt.save()
                 return HttpResponseRedirect('/users/verify/')
                 

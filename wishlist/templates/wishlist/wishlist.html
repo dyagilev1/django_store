@@ -1,5 +1,6 @@
 {% extends 'shop/base.html' %}
 {% block content %}
+{% load static%}
 
 
 {% if request.user.is_authenticated %}
@@ -15,7 +16,6 @@
                   <thead>
                     <tr>
                       <th></th>
-                      <th></th>
                       <th>Товар</th>
                       <th>Вартість</th>
                       <th>Наявність</th>
@@ -28,21 +28,24 @@
                   {% for w in w %}
                   {% csrf_token %}
                     <tr>
-                      <td>
-                      <button style="border: none; background: none;" data-wishlist-product="{{ w.id }}" class="delete-wishlist-product">Delete</button>
+                      <td class="align-middle">
+                      <button style="border: none; background: none;" data-wishlist-product="{{ w.id }}" class="delete-wishlist-product">Видалити</button>
                         {% comment %} <img class="aa-cart-close" src="{% static 'img/close.png' %}" alt=""> {% endcomment %}
                       </td>
-                      <td><a href="{{w.product.get_absolute_url}}"><img class="aa-cart-title" src="{{w.product.image.url}}"></a></td>
-                      <td><a href="{{w.product.get_absolute_url}}">{{ w.product.name }}</a></td>
-                      <td>{{ w.product.price }} грн.</td>
-                      <td>Є в наявності</td>
-                      <td><a href="{% url 'cart:cart_detail' %}" class="aa-add-to-cart-btn">Додати у кошик</a></td>
+                      <td class="align-middle"><a href="{{ w.product.get_absolute_url }}">
+                          <img src="{% if w.product.image %}{{ w.product.image.url }}
+                          {% else %}{% static 'img/no_image.png' %}{% endif %}"
+                          alt="" style="width: 50px;"></a>{{ w.product.name }}
+                      </td>
+                      <td class="align-middle">{{ w.product.price }} грн.</td>
+                      <td class="align-middle">Є в наявності</td>
+                      <td class="align-middle"><a href="{% url 'cart:cart_detail' %}" class="aa-add-to-cart-btn">Додати у кошик</a></td>
                     </tr>
                     {% empty %}
                     <tr>
                       <td>
                         <p>
-                         No item in wishlist
+                         Нема товарів в обраному
                         </p>
                       </td>
                     </tr>

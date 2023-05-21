@@ -72,21 +72,21 @@
     <div class="d-flex justify-content-center pt-1 border-bottom">
             <h5>Нові надходження</h5>
         </div>
-    <div class="owl-carousel owl-theme">
-        {% for item in new_arrival %}
-            <div class="item pr-2 py-3">
-                <a href="{{ item.get_absolute_url }}">
-                    <img src="{% if item.image %}
-                        {{ item.image.url }}
-                    {% else %}
-                        {% static 'img/no_image.png' %}    
-                    {% endif %}" alt="">
-                </a>
-                <a style="color:black;" href="{{ item.get_absolute_url}}">{{ item.name }}</a><br>
-                    {{ item.price }}грн.
-            </div>
-        {% endfor %}
-    </div>
+<div class="owl-carousel owl-theme">
+    {% for item in new_arrival %}
+        <div class="item pr-2 py-3">
+            <a href="{{ item.get_absolute_url }}">
+                <img src="{% if item.image %}
+                    {{ item.image.url }}
+                {% else %}
+                    {% static 'img/no_image.png' %}    
+                {% endif %}" alt="">
+            </a>
+            <a style="color:black;" href="{{ item.get_absolute_url}}">{{ item.name }}</a><br>
+                {{ item.price }}грн.
+        </div>
+    {% endfor %}
+</div>
 </div>
 <!-- End Product Slider Area -->
 

@@ -9,7 +9,6 @@ from django.forms import ModelForm
 
 class Cart:
 
-    """Shopping cart"""
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
     variant = models.ForeignKey(Variants, on_delete=models.SET_NULL,blank=True, null=True) 
     quantity = models.IntegerField()
@@ -17,7 +16,7 @@ class Cart:
 
 
     def __init__(self, request):
-        """Init cart"""
+        """Створити кошик"""
         self.session = request.session
         cart = self.session.get(settings.CART_SESSION_ID)
         if not cart:
@@ -26,7 +25,7 @@ class Cart:
 
 
     def add(self, product, quantity=1, override_quantity=False):
-        """Add product to the cart or update its quantity"""
+        """Додайте товар до кошика або змініть його кількість"""
         product_id = str(product.id)
         if product_id not in self.cart:
             self.cart[product_id] = {
@@ -40,18 +39,18 @@ class Cart:
         self.save()
 
     def save(self):
-        """Save the session"""
+        """Зберегти сеанс"""
         self.session.modified = True
 
     def remove(self, product):
-        """Delete product from the cart"""
+        """Видалити товар з кошика"""
         product_id = str(product.id)
         if product_id in self.cart:
             del self.cart[product_id]
             self.save()
 
     def __iter__(self):
-        """Iterate cart products for the cycle"""
+        """Чергування товарів у кошику для циклу"""
         product_ids = self.cart.keys()
         products = Product.objects.filter(id__in=product_ids)
         cart = self.cart.copy()
@@ -63,15 +62,15 @@ class Cart:
             yield item
 
     def __len__(self):
-        """Return sum of product quantities"""
+        """Повернути суму кількостей товарів"""
         return sum(item['quantity'] for item in self.cart.values())
 
     def get_total_price(self):
-        """Calculate total cart price"""
+        """Розрахувати загальну вартість кошика"""
         return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())
 
     def clear(self):
-        """Clear cart from the session"""
+        """Очистити кошик від сесії"""
         del self.session[settings.CART_SESSION_ID]
         self.save()
 

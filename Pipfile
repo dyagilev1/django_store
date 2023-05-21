@@ -15,6 +15,9 @@ django-jazzmin = "*"
 six = "*"
 django-fontawesome = "*"
 django-fontawesome-5 = "*"
+django-icons = "*"
+fontawesome-free = "*"
+fontawesomefree = "*"
 
 [dev-packages]
 

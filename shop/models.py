@@ -20,19 +20,6 @@ class Brand(models.Model):
         return self.brand
 
 
-############ SEASONS ############
-
-# class Season(models.Model):
-#     season = models.CharField(max_length=50, blank=True, null=True)
-#     code = models.SlugField(max_length=50,  blank=True, null=True)
-
-#     class Meta:        
-#         verbose_name = 'season'
-#         verbose_name_plural = 'seasons'
-
-#     def __str__(self):
-#         return self.season
-
 
 
 ############ GENDER ############

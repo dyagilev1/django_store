@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "26d27d3ef86e011180d3ba2523e7c681e1bc9938aa130e821e43364de303c370"
+            "sha256": "49edb8f96f40f18ea88675183c8ee950edfce9ba1e17f2f620ebd1275996c112"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -23,6 +23,14 @@
             ],
             "markers": "python_version >= '3.7'",
             "version": "==3.6.0"
+        },
+        "beautifulsoup4": {
+            "hashes": [
+                "sha256:492bbc69dca35d12daac71c4db1bfff0c876c00ef4a2ffacce226d4638eb72da",
+                "sha256:bd2520ca0d9d7d12694a53d44ac482d181b4ec1888909b035a3dbf40d0f57d4a"
+            ],
+            "markers": "python_full_version >= '3.6.0'",
+            "version": "==4.12.2"
         },
         "crispy-bootstrap4": {
             "hashes": [
@@ -79,6 +87,14 @@
             "index": "pypi",
             "version": "==1.0.18"
         },
+        "django-icons": {
+            "hashes": [
+                "sha256:0e4a8a279fab471708ed42bc77814ec537f26d8933fd72d75353c77fe67643b3",
+                "sha256:49ac412a19914b5836603498619f45908401bb0c4303f1bfb43b57d2fcb2557b"
+            ],
+            "index": "pypi",
+            "version": "==23.2"
+        },
         "django-import-export": {
             "hashes": [
                 "sha256:1d3f2cb2ee3cca0386ed60651fa1623be989f130d9fbdf98a67f7dc3a94b8a37",
@@ -127,6 +143,20 @@
             ],
             "markers": "python_version >= '3.6'",
             "version": "==1.1.0"
+        },
+        "fontawesome-free": {
+            "hashes": [
+                "sha256:5d3d0edbf6ce0f7cd56978a31ea4ea697a8bb28103b5c528b3aa1f0a4474d9a1"
+            ],
+            "index": "pypi",
+            "version": "==5.15.4"
+        },
+        "fontawesomefree": {
+            "hashes": [
+                "sha256:e12edad71b6cf6993fc7c6aea6367e131f2f247b6435faca99b12329bacd2b27"
+            ],
+            "index": "pypi",
+            "version": "==6.4.0"
         },
         "markuppy": {
             "hashes": [
@@ -273,6 +303,14 @@
             ],
             "index": "pypi",
             "version": "==1.16.0"
+        },
+        "soupsieve": {
+            "hashes": [
+                "sha256:1c1bfee6819544a3447586c889157365a27e10d88cde3ad3da0cf0ddf646feb8",
+                "sha256:89d12b2d5dfcd2c9e8c22326da9d9aa9cb3dfab0a83a024f05704076ee8d35ea"
+            ],
+            "markers": "python_version >= '3.7'",
+            "version": "==2.4.1"
         },
         "sqlparse": {
             "hashes": [

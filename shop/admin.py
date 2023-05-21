@@ -9,7 +9,7 @@ from import_export import resources
 from import_export import fields
 from import_export.widgets import ForeignKeyWidget
 
-
+from django_mptt_admin.admin import DjangoMpttAdmin
 class CategoryMPTTModelAdmin(DjangoMpttAdmin):
     mptt_level_indent = 20
     list_display = ('name', 'slug',)

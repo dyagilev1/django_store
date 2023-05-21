@@ -1,7 +1,6 @@
 
 const monthNames = ["Jan", "Feb", "Mar", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
 
-
 $("#commentForm").submit(function(e){
     e.preventDefault();
 
@@ -48,8 +47,6 @@ $("#commentForm").submit(function(e){
  $(document).on("click", ".add-to-wishlist", function(){
     let product_id = $(this).attr("data-product-item")
     let this_val = $(this)
-
-    console.log("Product ID IS", product_id);
 
     $.ajax({
         url: "/wishlist/add-to-wishlist",

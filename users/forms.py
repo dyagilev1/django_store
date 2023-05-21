@@ -6,7 +6,7 @@ from django.core import validators
 
 def validete_username(value):
     if len(value)<=2:
-        raise forms.ValidationError(f"Your username cannot be of {len(value)}  word")
+        raise forms.ValidationError(f"Ваше ім'я користувача не може бути {len(value)}  слів")
 
 class CreateUser(UserCreationForm):
     password1 = forms.CharField(label="Пароль", widget = forms.PasswordInput(attrs={"placeholder":"Пароль",'autocomplete':'new-password','class':'form-control'}),error_messages={"required":"Будь ласка, введіть пароль"},)
