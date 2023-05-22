@@ -12,11 +12,6 @@ django-crispy-forms = "*"
 crispy-bootstrap4 = "*"
 django-import-export = "*"
 django-jazzmin = "*"
-six = "*"
-django-fontawesome = "*"
-django-fontawesome-5 = "*"
-django-icons = "*"
-fontawesome-free = "*"
 fontawesomefree = "*"
 
 [dev-packages]
